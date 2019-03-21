@@ -1,0 +1,33 @@
+{% extends "teacher/base.html" %}
+{% load static %}
+{% block content %}
+<h1>Teacher Notice creation form</h1>
+
+<form method="POST" action="http://localhost:8000/teacher/teacherForm/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="Notice Name">Notice Title</label>
+      <input type="text" class="form-control" id="notice" placeholder="Notice title" name = "noticeTitle">
+    </div>
+    <div class="form-group">
+        <label for="Notice Subject">Notice Subject</label>
+        <input type="text" class="form-control" id="notice_subject" placeholder="Notice Subject" name = "noticeSubject">
+      </div>
+      <div class="form-group">
+        <label for="Notice Description">Notice Description</label>
+        <textarea class="form-control" id="description" name="noticeDescription" rows="3"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="FileUpload">Upload Pdf of Notice</label>
+        <input type="file" class="form-control-file" accept="image/*" id="file" name="file">
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-2" name="submit">Submit Notice</button>
+
+</form>
+
+<embed src="/media/Bill.pdf" width="500" height="375" 
+ type="application/pdf">
+
+{% endblock content %}
